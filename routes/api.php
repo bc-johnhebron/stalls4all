@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/locations', 'APILocationsController@index');
+Route::get('/locations/{id}', 'APILocationsController@show');
+Route::get('/locations/{id}/reviews', 'APIReviewsController@index');
+Route::get('/locations/{id}/reviews/{review_id}', 'APIReviewsController@show');
