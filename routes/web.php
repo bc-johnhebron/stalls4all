@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('locations', 'LocationController');
 Route::resource('photos', 'PhotoController');
-Route::resource('reviews', 'ReviewController');
+Route::resource('locations.reviews', 'ReviewController');

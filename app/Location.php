@@ -17,6 +17,16 @@ class Location extends Model
         return $this->hasMany('App\Photo', 'entity_id');
     }
 
+    public function reviews()
+    {
+    	return $this->hasMany('App\Review');
+    }
+
+    public function rating_stars()
+    {
+
+    }
+
 }
 
 
