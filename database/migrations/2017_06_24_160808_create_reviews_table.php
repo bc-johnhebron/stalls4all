@@ -18,17 +18,17 @@ class CreateReviewsTable extends Migration
             $table->integer('location_id');
             $table->integer('user_id');
             $table->integer('stars');
-            $table->boolean('sing_or_mult');
-            $table->integer('cleanliness');
-            $table->boolean('changing_station');
-            $table->boolean('unisex');
-            $table->boolean('doors');
-            $table->boolean('locks');
-            $table->boolean('feel_safe');
-            $table->boolean('wifi');
-            $table->boolean('customer_only');
-            $table->boolean('wheelchair_accessible');
-            $table->text('comment');
+            $table->boolean('sing_or_mult')->nullable();
+            $table->integer('cleanliness')->nullable();
+            $table->boolean('changing_station')->nullable();
+            $table->boolean('unisex')->nullable();
+            $table->boolean('doors')->nullable();
+            $table->boolean('locks')->nullable();
+            $table->boolean('feel_safe')->nullable();
+            $table->boolean('wifi')->nullable();
+            $table->boolean('customer_only')->nullable();
+            $table->boolean('wheelchair_accessible')->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

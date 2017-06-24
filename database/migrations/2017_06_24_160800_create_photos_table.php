@@ -17,7 +17,7 @@ class CreatePhotosTable extends Migration
             $table->increments('id');
             $table->string('entity_name');
             $table->string('entity_id');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('path');
             $table->string('name');
             $table->integer('order');
