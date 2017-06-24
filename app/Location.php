@@ -12,6 +12,10 @@ class Location extends Model
         'address1', 'address2', 'city', 'state', 'zip'
     ];
 
+    public function photos()
+    {
+        return $this->hasMany('App\Photo', 'entity_id');
+    }
 
 }
 

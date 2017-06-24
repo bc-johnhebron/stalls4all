@@ -30,3 +30,6 @@ Entrepreneeur in Residence at Capital Factory
 
 
 leadquizzes.com
+
+
+request()->file('name')->store('foldername')

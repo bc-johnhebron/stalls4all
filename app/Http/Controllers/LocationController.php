@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Location;
+use App\Photo;
 
 class LocationController extends Controller
 {
@@ -16,6 +17,8 @@ class LocationController extends Controller
     {
         //
         $locations = Location::all();
+        // $photo = Location::photos();
+
         return view('locations.index', compact('locations'));
     }
 
@@ -67,6 +70,18 @@ class LocationController extends Controller
 
         $location->save();
 
+        $var = $request->file('image')->store('public/business_profiles');
+        $var_plode = explode('/', $var);
+
+        $photo = new Photo();
+        $photo->entity_name = "Location";
+        $photo->entity_id = $location->id;
+        $photo->path = $var;
+        $photo->name = $var_plode[2];
+        $photo->order = 1;
+        $photo->primary_image = TRUE;
+        $location->photos()->save($photo);
+
         return redirect("/locations/{$location->id}");
         
         
@@ -82,6 +97,7 @@ class LocationController extends Controller
     {
         //
         $location = Location::find($id);
+        // dd($location->photos);
         return view('locations.show', compact('location'));
 
     }
