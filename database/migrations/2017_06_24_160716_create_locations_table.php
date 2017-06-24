@@ -18,7 +18,7 @@ class CreateLocationsTable extends Migration
             $table->double('lat', 15, 8);
             $table->double('long', 15, 8);
             $table->string('name');
-             $table->text('description');
+            $table->text('description');
             $table->string('category');
             $table->string('address1');
             $table->string('address2');
