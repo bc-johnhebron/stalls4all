@@ -8,7 +8,7 @@
                 <div class="panel-heading">{{ $location->name }}</div>
                     <div class="panel-body">
                         <ul>
-                            <li><img src="/storage/business_profiles/{{ $location->photos[0]->name }}" style="max-width: 500px;"></li>
+                            <li><img src="/storage/business_profiles/{{ $location->photos[0]->name }}" class="img-responsive" ></li>
                             <li>{{ $location->description }}</li>
                             <li>{{ $location->category }}</li>
                             <li>{{ $location->address1 }}</li>
