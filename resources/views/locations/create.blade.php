@@ -42,8 +42,12 @@
                             <label for="category" class="col-md-4 control-label">Category</label>
 
                             <div class="col-md-6">
-                                <input id="category" type="text" class="form-control" name="category" value="{{ old('category') }}">
-
+                              <select id="category" class="form-control" name="category"> <!--Supplement an id here instead of using 'name'-->
+                                <option value="Restaurant" selected>Restaurant</option>
+                                <option value="Business">Business</option>
+                                <option value="Gas Station/Convenience Store">Gas Station/Convenience Store</option>
+                                <option value="Residential">Residential</option>
+                              </select>
                                 @if ($errors->has('category'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('category') }}</strong>
