@@ -10,7 +10,7 @@
                 @foreach ($locations as $location)
                     <div class="panel-body">
                         <ul>
-                            <li><a href="locations/{{$location->id}}">{{ $location->name }}</a></li>
+                            <li><a href="/locations/{{$location->id}}">{{ $location->name }}</a></li>
                             <li><img src="/storage/business_profiles/{{ $location->photos[0]->name }}" style="max-width: 100px;"></li>
                             <li>{{ $location->description }}</li>
                             <li>{{ $location->category }}</li>

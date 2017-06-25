@@ -21,3 +21,4 @@ Route::get('/locations', 'APILocationsController@index');
 Route::get('/locations/{id}', 'APILocationsController@show');
 Route::get('/locations/{id}/reviews', 'APIReviewsController@index');
 Route::get('/locations/{id}/reviews/{review_id}', 'APIReviewsController@show');
+Route::get('/locations/{id}/photos', 'APIPhotosController@index');
