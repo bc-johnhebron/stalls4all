@@ -35,18 +35,29 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Bathroom Locations</div>
 
-                @foreach ($locations as $location)
+                @foreach ($locations['businesses'] as $location)
+
                     <div class="panel-body">
                         <ul>
-                            <li><a href="/locations/{{$location->id}}">{{ $location->name }}</a></li>
-                            <li><img src="/storage/business_profiles/{{ $location->photos[0]->name }}" style="max-width: 100px;"></li>
-                            <li>{{ $location->description }}</li>
-                            <li>{{ $location->category }}</li>
-                            <li>{{ $location->address1 }}</li>
-                            <li>{{ $location->address2 }}</li>
-                            <li>{{ $location->city }}</li>
-                            <li>{{ $location->state }}</li>
-                            <li>{{ $location->zip }}</li>
+                            <li><a href="/locations/{{$location['id']}}">{{ $location['name'] }}</a></li>
+                            <li><img src="{{ $location['image_url'] }}" style="max-width: 100px;"></li>
+                            <li>Categories:
+                                <ul>
+                                    @foreach ($location['categories'] as $category)
+                                    <li>{{ $category['title'] }}</li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                Location:
+                                <ul>
+                                    <li>{{ $location['location']['address1'] }}</li>
+                                    <li>{{ $location['location']['address2'] }}</li>
+                                    <li>{{ $location['location']['city'] }} {{ $location['location']['state'] }}, {{ $location['location']['zip_code'] }}</li>
+                                </ul>
+                            </li>
+                            
                         </ul>
                     </div>
                     <hr>

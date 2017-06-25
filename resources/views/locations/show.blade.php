@@ -5,17 +5,28 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ $location->name }}</div>
+                <div class="panel-heading">{{ $location['name'] }}</div>
+
                 <div class="panel-body">
                     <ul>
-                        <li><img src="/storage/business_profiles/{{ $location->photos[0]->name }}" style="max-width: 500px;"></li>
-                        <li>{{ $location->description }}</li>
-                        <li>{{ $location->category }}</li>
-                        <li>{{ $location->address1 }}</li>
-                        <li>{{ $location->address2 }}</li>
-                        <li>{{ $location->city }}</li>
-                        <li>{{ $location->state }}</li>
-                        <li>{{ $location->zip }}</li>
+                        <li><img src="{{ $location['image_url'] }}" style="max-width: 500px;"></li>
+                        </li>
+                        <li>Categories:
+                            <ul>
+                                @foreach ($location['categories'] as $category)
+                                <li>{{ $category['title'] }}</li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            Location:
+                            <ul>
+                                <li>{{ $location['location']['address1'] }}</li>
+                                <li>{{ $location['location']['address2'] }}</li>
+                                <li>{{ $location['location']['city'] }} {{ $location['location']['state'] }}, {{ $location['location']['zip_code'] }}</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -23,13 +34,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Leave a Review</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('locations.reviews.store', $location->id) }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('locations.reviews.store', $location['id']) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('stars') ? ' has-error' : '' }}">
                             <label for="stars" class="col-md-4 control-label">Stars</label>
 
                             <div class="col-md-6">
+                                <select class="form-control">
+                                    
+                                </select>
                                 <input id="stars" type="text" class="form-control" name="stars" value="{{ old('stars') }}" autofocus>
 
                                 @if ($errors->has('stars'))
@@ -207,21 +221,21 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">Reviews</div>
-                @foreach ($location->reviews as $review)
+                @foreach ($location['bathroom_reviews'] as $review)
                 <div class="panel-body">
                     <ul>
-                        <li>{{ $review->stars }}</li>
-                        <li>{{ $review->sing_or_mult }}</li>
-                        <li>{{ $review->cleanliness }}</li>
-                        <li>{{ $review->changing_station }}</li>
-                        <li>{{ $review->unisex }}</li>
-                        <li>{{ $review->doors }}</li>
-                        <li>{{ $review->locks }}</li>
-                        <li>{{ $review->feel_safe }}</li>
-                        <li>{{ $review->wifi }}</li>
-                        <li>{{ $review->customer_only }}</li>
-                        <li>{{ $review->wheelchair_accessible }}</li>
-                        <li>{{ $review->comment }}</li>
+                        <li>{{ $review['stars'] }}</li>
+                        <li>{{ $review['sing_or_mult'] }}</li>
+                        <li>{{ $review['cleanliness'] }}</li>
+                        <li>{{ $review['changing_station'] }}</li>
+                        <li>{{ $review['unisex'] }}</li>
+                        <li>{{ $review['doors'] }}</li>
+                        <li>{{ $review['locks'] }}</li>
+                        <li>{{ $review['feel_safe'] }}</li>
+                        <li>{{ $review['wifi'] }}</li>
+                        <li>{{ $review['customer_only'] }}</li>
+                        <li>{{ $review['wheelchair_accessible'] }}</li>
+                        <li>{{ $review['comment'] }}</li>
                     </ul>
                 </div>
                 @endforeach

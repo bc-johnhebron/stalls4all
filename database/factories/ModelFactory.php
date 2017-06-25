@@ -40,24 +40,24 @@ $factory->define(App\Location::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Review::class, function (Faker\Generator $faker) {
+// $factory->define(App\Review::class, function (Faker\Generator $faker) {
 
-    return [
-        'user_id' => $faker->numberBetween($min = 0, $max = 21),
-        'stars' => $faker->numberBetween($min = 1, $max = 5),
-        'sing_or_mult' => $faker->boolean,
-        'cleanliness' => $faker->boolean,
-        'changing_station' => $faker->boolean,
-        'unisex' => $faker->boolean,
-        'doors' => $faker->boolean,
-        'locks' => $faker->boolean,
-        'feel_safe' => $faker->boolean,
-        'wifi' => $faker->boolean,
-        'customer_only' => $faker->boolean,
-        'wheelchair_accessible' => $faker->boolean,
-        'comment' => $faker->realText($maxNbChars = 100, $indexSize = 2)
-    ];
-});
+//     return [
+//         'user_id' => $faker->numberBetween($min = 0, $max = 21),
+//         'stars' => $faker->numberBetween($min = 1, $max = 5),
+//         'sing_or_mult' => $faker->boolean,
+//         'cleanliness' => $faker->boolean,
+//         'changing_station' => $faker->boolean,
+//         'unisex' => $faker->boolean,
+//         'doors' => $faker->boolean,
+//         'locks' => $faker->boolean,
+//         'feel_safe' => $faker->boolean,
+//         'wifi' => $faker->boolean,
+//         'customer_only' => $faker->boolean,
+//         'wheelchair_accessible' => $faker->boolean,
+//         'comment' => $faker->realText($maxNbChars = 100, $indexSize = 2)
+//     ];
+// });
 
 $factory->define(App\Photo::class, function (Faker\Generator $faker) {
 
@@ -73,6 +73,31 @@ $factory->define(App\Photo::class, function (Faker\Generator $faker) {
         'primary_image' => TRUE
     ];
 });
+
+
+$factory->define(App\Review::class, function (Faker\Generator $faker) {
+
+    return [
+        'user_id' => $faker->numberBetween($min = 0, $max = 21),
+        'stars' => $faker->numberBetween($min = 1, $max = 5),
+        'sing_or_mult' => $faker->boolean,
+        'cleanliness' => $faker->boolean,
+        'changing_station' => $faker->boolean,
+        'unisex' => $faker->boolean,
+        'doors' => $faker->boolean,
+        'locks' => $faker->boolean,
+        'feel_safe' => $faker->boolean,
+        'wifi' => $faker->boolean,
+        'customer_only' => $faker->boolean,
+        'wheelchair_accessible' => $faker->boolean,
+        'comment' => $faker->realText($maxNbChars = 200, $indexSize = 2)
+    ];
+});
+
+
+
+
+
 
 
 
