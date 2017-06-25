@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                <span class="logo-name">Stalls 4 All</span>
             </a>
         </div>
 
