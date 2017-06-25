@@ -5,14 +5,18 @@ ctrl.controller('mainController', ['$scope','Locations','geolocation', function(
     $scope.userLoc = false;
     // loading variable to show the spinning loading icon
     $scope.loading = 'Getting your location…';
-
-    // GET ALL LOCATIONS ==============
-    Locations.getAll()
-      .success(function(data) {
-        $scope.data = data;
-        $scope.loading = false;
-
+    geolocation.getLocation()
+      .then(function(data){
+        $scope.loading = 'Searching for nearby bathrooms…';
+        $scope.userLoc = {lat:data.coords.latitude, lng:data.coords.longitude};
+        // GET ALL LOCATIONS ==============
+        Locations.getAll()
+          .success(function(data) {
+            $scope.data = data;
+            $scope.loading = false;
+          });
       });
+
 
     /*dataService.getFormattedData()
       .success(function(data) {
@@ -20,12 +24,6 @@ ctrl.controller('mainController', ['$scope','Locations','geolocation', function(
         $scope.loading = false;
       });
       */
-    geolocation.getLocation()
-      .then(function(data){
-        $scope.loading = 'Searching for nearby bathrooms…';
-        $scope.userLoc = {lat:data.coords.latitude, lng:data.coords.longitude};
-
-      });
 
     $scope.getUserLoc = function(){
       // TODO: Get user location with geolocation service

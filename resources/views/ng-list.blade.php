@@ -2,7 +2,10 @@
 
 @section('content')
 <section ng-controller="mainController">
-  <p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin">LOADING</span></p>
+  <div ng-show="loading">
+    <h3 class="text-center padtop-5" ><# loading #></h3>
+    <img class="align-center" src="/images/loading.gif" alt="loading" />
+  </div>
 
   <div ng-hide="loading" class="container">
       <div class="row">
@@ -23,6 +26,10 @@
                 <# loc.city #>, <# loc.state #> <# loc.zip #><br/>
                 <span ng-if="userLoc">.2 mi away</span>
               </p>
+              <span class="feature-icon baby"></span>
+              <span class="feature-icon wheelchair"></span>
+              <span class="feature-icon single-stall"></span>
+              <span class="feature-icon unisex"></span>
             <pre>
               <# loc #>
             </pre>
