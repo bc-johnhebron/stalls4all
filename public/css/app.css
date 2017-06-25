@@ -8477,6 +8477,15 @@ img.img-responsive {
   margin: 15px 0px;
   padding: 0px 15px 10px 15px;
   border: 1px solid #d3e0e9;
+  position: relative;
+}
+
+.feature-icons {
+  position: relative;
+  float: right;
+  height: 40px;
+  bottom: 40px;
+  right: 0px;
 }
 
 .feature-icon {

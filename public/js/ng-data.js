@@ -1,4 +1,5 @@
 var data = angular.module('s4aDataService', []);
+
 data.service('dataService', ['Locations', '$q', function(Locations, $q) {
   var _this = this;
 
@@ -20,6 +21,9 @@ data.factory('Locations', function($http) {
         // get all the comments
         getAll : function() {
             return $http.get('/api/locations');
+        },
+        getNearby : function(lat,lon) {
+          return $http.get('/api/locations?lat='+lat+'&lon='+lon);
         },
         getSingle : function(id) {
           return $http.get('/api/locations/'+id);

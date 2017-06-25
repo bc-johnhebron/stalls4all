@@ -24,11 +24,11 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
-
+    <script src="{{ asset('js/ng-app.js') }}"></script>
     <script src="{{ asset('js/ng-ctrl.js') }}"></script>
     <script src="{{ asset('js/ng-data.js') }}"></script>
     <script src="{{ asset('js/ng-directives.js') }}"></script>
     <script src="{{ asset('js/ng-services.js') }}"></script>
-    <script src="{{ asset('js/ng-app.js') }}"></script>
+
 </body>
 </html>

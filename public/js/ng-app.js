@@ -11,3 +11,9 @@ app.filter('range', function() {
     return val;
   };
 });
+
+app.filter('meterToFeet', function() {
+  return function(input) {
+    return input * 0.000621371;
+  };
+});

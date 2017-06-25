@@ -9,31 +9,34 @@
 
   <div ng-hide="loading" class="container">
       <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <h1>Angular!! </h1>
-            <button class="btn btn-info" ng-click="getUserLoc()">Get my location</button>
-            <div ng-show="userLoc"><# userLoc #></div>
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <h1>Restrooms Near You</h1>
+            <button ng-hide="userLoc" class="btn btn-info" ng-click="getUserLoc()">Get my location</button>
           </div>
-          <div ng-repeat="loc in data" class="col-sm-12 col-md-6 col-lg-4">
+          <div ng-repeat="loc in data | orderBy:'distance'" class="col-sm-12 col-md-6 col-lg-4">
             <div class="bathroom_block">
-              <div class="pull-right" ng-controller="reviewController">
-                <!-- TODO: Pass in/calculate aggregate rating -->
-                <star-rating rating="4"></star-rating>
+              <div class="pull-right">
+                <star-rating rating="loc.rating"></star-rating>
               </div>
               <p>
                 <strong><# loc.name #></strong><br/>
-                <# loc.address1 #> <# loc.address2 #><br/>
-                <# loc.city #>, <# loc.state #> <# loc.zip #><br/>
-                <span ng-if="userLoc">.2 mi away</span>
+                <# loc.location.address1 #> <# loc.location.address2 #><br/>
+                <# loc.location.city #>, <# loc.location.state #> <# loc.location.zip_code #><br/>
+                <# loc.display_phone #><br/>
+                <span ng-if="userLoc"><# loc.distance | meterToFeet | number:2 #> mi away</span>
               </p>
-              <span class="feature-icon baby"></span>
-              <span class="feature-icon wheelchair"></span>
-              <span class="feature-icon single-stall"></span>
-              <span class="feature-icon unisex"></span>
+              <div ng-controller="reviewController" class="feature-icons">
+                <span ng-class="familyFriendly()" class="feature-icon baby"></span>
+                <span class="feature-icon wheelchair"></span>
+                <span class="feature-icon single-stall"></span>
+                <span class="feature-icon unisex"></span>
+              </div>
+            <!--
             <pre>
               <# loc #>
             </pre>
             <reviews loc-id="<# loc.id #>"></reviews>
+            -->
           </div>
       </div>
   </div>
