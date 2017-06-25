@@ -7,14 +7,30 @@ ctrl.controller('mainController', ['$scope','Locations','geolocation', function(
     $scope.loading = 'Getting your location…';
     geolocation.getLocation()
       .then(function(data){
+        var coords = {lat:data.coords.latitude, lng:data.coords.longitude};
         $scope.loading = 'Searching for nearby bathrooms…';
-        $scope.userLoc = {lat:data.coords.latitude, lng:data.coords.longitude};
+        $scope.userLoc = coords;
         // GET ALL LOCATIONS ==============
-        Locations.getAll()
-          .success(function(data) {
-            $scope.data = data;
+        Locations.getNearby(coords.lat, coords.lng)
+          .then(function(response) {
+            console.log(response.data);
+            $scope.data = response.data.businesses;
             $scope.loading = false;
+          }, function(error){
+            $scope.loading = 'Oh, poop! We can\'t find anything, check back later';
           });
+      }, function(err) {
+        $scope.loading = 'Couldn\'t find location. Searching all bathrooms…';
+        Locations.getAll().then(
+          function(response) {
+            console.log(response.data);
+            $scope.data = response.data.businesses;
+            $scope.loading = false;
+          },
+          function(error){
+            $scope.loading = 'Oh, poop! We\'re having issues… check back later';
+          }
+        );
       });
 
 
@@ -37,5 +53,8 @@ ctrl.controller('reviewController', ['$scope', function($scope){
     var num = 4;
     console.log(reviewObject);
     return num;
+  }
+  $scope.familyFriendly = function(reviewObject){
+    
   }
 }])
