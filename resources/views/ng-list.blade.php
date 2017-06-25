@@ -48,7 +48,7 @@
 
           <div ng-controller="reviewController" class="feature-icons">
             <span ng-class="familyFriendly()" class="feature-icon baby"></span>
-            <span class="feature-icon wheelchair"></span>
+            <span ng-class="{active:true}" class="feature-icon wheelchair"></span>
             <span class="feature-icon single-stall"></span>
             <span class="feature-icon unisex"></span>
           </div>

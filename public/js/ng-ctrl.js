@@ -1,6 +1,7 @@
 var ctrl = angular.module('s4aControllers', []);
 
 ctrl.controller('mainController', ['$scope','Locations','geolocation', function($scope, Locations, geolocation){
+    $scope.loading = 'Getting your location…';
     $scope.data = {};
     $scope.userLoc = false;
     $scope.filter = {
@@ -15,7 +16,6 @@ ctrl.controller('mainController', ['$scope','Locations','geolocation', function(
     }
 
     // loading variable to show the spinning loading icon
-    $scope.loading = 'Getting your location…';
     $scope.getUserLoc = function() {
       geolocation.getLocation()
         .then(function(data){
