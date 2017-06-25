@@ -17,3 +17,19 @@ app.filter('meterToFeet', function() {
     return input * 0.000621371;
   };
 });
+
+app.filter('unisexFilter', function() {
+  return function(input, bool) {
+    var out = [];
+    if(bool == false){
+      return input;
+    } else {
+      angular.forEach(input, function(item){
+        if(item.bathroom_review.unisex == true) {
+          out.push(item);
+        }
+      })
+    }
+    return out; 
+  }
+})

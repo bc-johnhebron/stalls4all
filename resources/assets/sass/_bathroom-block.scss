@@ -9,7 +9,7 @@
   position:relative;
   float: right;
   height: 40px;
-  bottom: 40px;
+  bottom: 15px;
   right: 0px;
 }
 .feature-icon {
@@ -35,4 +35,23 @@
   &.active {
     opacity: 1;
   }
+}
+.order-buttons {
+  input {
+    display:none;
+  }
+  .btn {
+    border: 1px solid $brand-primary;
+    background: transparent;
+    &:hover{
+      background-color: lighten($brand-primary, 25);
+    }
+    &.active{
+      background-color: $brand-primary;
+    }
+  }
+}
+
+.main-label{
+  text-decoration: underline;
 }
