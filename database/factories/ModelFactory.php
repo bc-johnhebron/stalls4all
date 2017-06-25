@@ -36,7 +36,7 @@ $factory->define(App\Location::class, function (Faker\Generator $faker) {
         'address2' => $faker->secondaryAddress,
         'city' => "Austin",
         'state' => "Texas",
-        'zip' => 78758
+        'zip' => $faker->numberBetween($min = 78710, $max = 78720)
     ];
 });
 
