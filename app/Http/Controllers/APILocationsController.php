@@ -18,7 +18,9 @@ class APILocationsController extends Controller
         //
         if ($request->query('zip') !== NULL AND $request->query('zip') !== '') {
             return Location::where('zip', '=', $request->query('zip'))->take(15)->get();
-        }else{
+        } elseif ($request->query('all') !== NULL AND $request->query('all') !== '') {
+            return Location::all();
+        } else {
             return Location::take(15)->get();
         }
 

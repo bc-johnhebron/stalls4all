@@ -13,11 +13,18 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         //
-        $locations = Location::all();
-        // $photo = Location::photos();
+        if ($request->query('zip') !== NULL AND $request->query('zip') !== '') {
+            $locations = Location::where('zip', '=', $request->query('zip'))->take(15)->get();
+        }elseif ($request->query('all') !== NULL AND $request->query('all') !== '') {
+            $locations = Location::all();
+        } else{
+            $locations = Location::take(15)->get();
+        }
+        //
 
         return view('locations.index', compact('locations'));
     }
