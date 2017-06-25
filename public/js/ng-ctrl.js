@@ -10,7 +10,7 @@ ctrl.controller('mainController', ['$scope','Locations','geolocation', function(
       wheelchair: false,
       single: false
     }
-    $scope.sortOrder = '-rating';
+    $scope.sortOrder = 'distance';
     $scope.updateOrdering = function(val) {
       $scope.sortOrder = val;
     }

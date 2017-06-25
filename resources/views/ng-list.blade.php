@@ -2,9 +2,11 @@
 
 @section('content')
 <section ng-controller="mainController">
-  <div ng-show="loading">
-    <h3 class="text-center padtop-5" ><# loading #></h3>
-    <img class="align-center" src="/images/loading.gif" alt="loading" />
+  <div ng-show="loading" class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+      <h3 class="text-center padtop-5" ><# loading #></h3>
+      <img class="align-center" src="/images/loading.gif" alt="loading" />
+    </div>
   </div>
 
   <div ng-hide="loading" class="container">
@@ -16,24 +18,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 text-center">
+      <div class="col-sm-12 col-md-6 text-center">
         <fieldset class="form-group form-inline order-buttons">
           <h4 class="main-label">Order By: </h4>
+          <button class="btn" ng-class="{active:sortOrder=='distance'}" ng-click="updateOrdering('distance')">Closest to Me</button>
           <button class="btn" ng-class="{active:sortOrder=='-rating'}" ng-click="updateOrdering('-rating')">Best Rooms</button>
-          <button class="btn" ng-class="{active:sortOrder=='rating'}" ng-click="updateOrdering('rating')">Worst Rooms</button>
-          <button class="btn" ng-class="{active:sortOrder=='distance'}" ng-click="updateOrdering('distance')">Worst Rooms</button>
+          <button class="btn" ng-class="{active:sortOrder=='rating'}" ng-click="updateOrdering('rating')">Worst Rooms</button><br/>
         </fieldset>
+      </div>
+      <div class="col-sm-12 col-md-6 text-center">
         <fieldset class="form-group form-inline">
           <h4 class="main-label">Filter By: </h4>
           <input type="checkbox" name="baby-station" id="baby-station" ng-model="filter.baby" /> <label for="baby-station">Baby Station</label>
-          <input type="checkbox" name="wheelchair" id="wheelchair" ng-model="filter.wheelchair" /> <label for="wheelchair">Wheelchair Accessible</label>
+          <input type="checkbox" name="wheelchair" id="wheelchair" ng-model="filter.wheelchair" /> <label for="wheelchair">Wheelchair Accessible</label><br/>
           <input type="checkbox" name="unisex" id="unisex" ng-model="filter.unisex" /> <label for="unisex">Unisex</label>
           <input type="checkbox" name="single-occ" id="single-occ" ng-model="filter.single" /> <label for="single-occ">Single Occupancy</label>
         </fieldset>
       </div>
     </div>
     <div class="row">
-      <div ng-repeat="loc in data | orderBy:order" class="col-sm-12 col-md-6 col-lg-4">
+      <div ng-repeat="loc in data | orderBy:sortOrder" class="col-sm-12 col-md-6 col-lg-4">
         <div class="bathroom_block">
           <div class="pull-right">
             <star-rating rating="loc.rating"></star-rating>

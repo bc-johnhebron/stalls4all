@@ -8533,6 +8533,7 @@ label {
 .order-buttons .btn {
   border: 1px solid #52fbff;
   background: transparent;
+  margin: 5px;
 }
 
 .order-buttons .btn:hover {

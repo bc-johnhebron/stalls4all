@@ -15,6 +15,7 @@ data.service('dataService', ['Locations', '$q', function(Locations, $q) {
     return deferred.promise;
   }
 }]);
+
 data.factory('Locations', function($http) {
     console.log('Locations factory');
     return {
