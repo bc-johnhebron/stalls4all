@@ -3,35 +3,49 @@ var ctrl = angular.module('s4aControllers', []);
 ctrl.controller('mainController', ['$scope','Locations','geolocation', function($scope, Locations, geolocation){
     $scope.data = {};
     $scope.userLoc = false;
+    $scope.filter = {
+      baby: false,
+      unisex: false,
+      wheelchair: false,
+      single: false
+    }
+    $scope.sortOrder = '-rating';
+    $scope.updateOrdering = function(val) {
+      $scope.sortOrder = val;
+    }
+
     // loading variable to show the spinning loading icon
     $scope.loading = 'Getting your location…';
-    geolocation.getLocation()
-      .then(function(data){
-        var coords = {lat:data.coords.latitude, lng:data.coords.longitude};
-        $scope.loading = 'Searching for nearby bathrooms…';
-        $scope.userLoc = coords;
-        // GET ALL LOCATIONS ==============
-        Locations.getNearby(coords.lat, coords.lng)
-          .then(function(response) {
-            console.log(response.data);
-            $scope.data = response.data.businesses;
-            $scope.loading = false;
-          }, function(error){
-            $scope.loading = 'Oh, poop! We can\'t find anything, check back later';
-          });
-      }, function(err) {
-        $scope.loading = 'Couldn\'t find location. Searching all bathrooms…';
-        Locations.getAll().then(
-          function(response) {
-            console.log(response.data);
-            $scope.data = response.data.businesses;
-            $scope.loading = false;
-          },
-          function(error){
-            $scope.loading = 'Oh, poop! We\'re having issues… check back later';
-          }
-        );
-      });
+    $scope.getUserLoc = function() {
+      geolocation.getLocation()
+        .then(function(data){
+          var coords = {lat:data.coords.latitude, lng:data.coords.longitude};
+          $scope.loading = 'Searching for nearby bathrooms…';
+          $scope.userLoc = coords;
+          // GET ALL LOCATIONS ==============
+          Locations.getNearby(coords.lat, coords.lng)
+            .then(function(response) {
+              console.log(response.data);
+              $scope.data = response.data.businesses;
+              $scope.loading = false;
+            }, function(error){
+              $scope.loading = 'Oh, poop! We can\'t find anything, check back later';
+            });
+        }, function(err) {
+          $scope.loading = 'Couldn\'t find location. Searching all bathrooms…';
+          Locations.getAll().then(
+            function(response) {
+              console.log(response.data);
+              $scope.data = response.data.businesses;
+              $scope.loading = false;
+            },
+            function(error){
+              $scope.loading = 'Oh, poop! We\'re having issues… check back later';
+            }
+          );
+        });
+    }
+    $scope.getUserLoc();
 
 
     /*dataService.getFormattedData()
@@ -55,6 +69,6 @@ ctrl.controller('reviewController', ['$scope', function($scope){
     return num;
   }
   $scope.familyFriendly = function(reviewObject){
-    
+
   }
 }])
