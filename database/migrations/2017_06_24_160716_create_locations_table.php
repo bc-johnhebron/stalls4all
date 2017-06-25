@@ -18,6 +18,8 @@ class CreateLocationsTable extends Migration
             $table->double('lat', 15, 8)->nullable();
             $table->double('long', 15, 8)->nullable();
             $table->string('name');
+            $table->string('image_url');
+            $table->integer('yelp_rating');
             $table->text('description')->nullable();
             $table->string('category');
             $table->string('address1');
