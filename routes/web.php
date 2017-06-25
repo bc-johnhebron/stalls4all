@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('ng-list');
 });
 
 Route::get('/ng', function () {

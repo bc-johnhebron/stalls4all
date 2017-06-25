@@ -18,14 +18,14 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                <li><a href="{{ route('locations.index') }}">Bathrooms</a></li>
-                <li><a href="{{ route('locations.create') }}">Add Bathroom</a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="{{ route('locations.index') }}">Bathrooms</a></li>-->
+                <li><a href="{{ route('locations.create') }}">Add Review</a></li>
             </ul>
 
-            <!-- Right Side Of Navbar -->
+            <!-- Right Side Of Navbar
             <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
+                <!-- Authentication Links
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
@@ -51,6 +51,7 @@
                     </li>
                 @endif
             </ul>
+            -->
         </div>
     </div>
 </nav>
