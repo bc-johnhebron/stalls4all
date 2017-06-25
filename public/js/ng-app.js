@@ -18,6 +18,38 @@ app.filter('meterToFeet', function() {
   };
 });
 
+app.filter('babyFilter', function() {
+  return function(input, bool) {
+    var out = [];
+    if(bool == false){
+      return input;
+    } else {
+      angular.forEach(input, function(item){
+        if(item.bathroom_reviews[0].changing_station == true) {
+          out.push(item);
+        }
+      })
+    }
+    return out;
+  }
+});
+
+app.filter('wheelchairFilter', function() {
+  return function(input, bool) {
+    var out = [];
+    if(bool == false){
+      return input;
+    } else {
+      angular.forEach(input, function(item){
+        if(item.bathroom_reviews[0].wheelchair_accessible == true) {
+          out.push(item);
+        }
+      })
+    }
+    return out;
+  }
+});
+
 app.filter('unisexFilter', function() {
   return function(input, bool) {
     var out = [];
@@ -25,11 +57,27 @@ app.filter('unisexFilter', function() {
       return input;
     } else {
       angular.forEach(input, function(item){
-        if(item.bathroom_review.unisex == true) {
+        if(item.bathroom_reviews[0].unisex == true) {
           out.push(item);
         }
       })
     }
-    return out; 
+    return out;
   }
-})
+});
+
+app.filter('singleFilter', function() {
+  return function(input, bool) {
+    var out = [];
+    if(bool == false){
+      return input;
+    } else {
+      angular.forEach(input, function(item){
+        if(item.bathroom_reviews[0].sing_or_mult == true) {
+          out.push(item);
+        }
+      })
+    }
+    return out;
+  }
+});

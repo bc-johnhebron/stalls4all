@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="row">
-      <div ng-repeat="loc in data | orderBy:sortOrder" class="col-sm-12 col-md-6 col-lg-4">
+      <div ng-repeat="loc in data | orderBy:sortOrder | babyFilter:filter.baby | wheelchairFilter:filter.wheelchair | unisexFilter:filter.unisex | singleFilter:filter.single " class="col-sm-12 col-md-6 col-lg-4">
         <div class="bathroom_block">
           <div class="pull-right">
             <star-rating rating="loc.rating"></star-rating>
@@ -51,10 +51,10 @@
           <span class="blue-text martop-1" ng-if="userLoc"><# loc.distance | meterToFeet | number:2 #> mi away</span>
 
           <div ng-controller="reviewController" class="feature-icons">
-            <span ng-class="familyFriendly()" class="feature-icon baby"></span>
-            <span ng-class="{active:true}" class="feature-icon wheelchair"></span>
-            <span class="feature-icon single-stall"></span>
-            <span class="feature-icon unisex"></span>
+            <span ng-class="{active:loc.bathroom_reviews[0].changing_station == 1}" class="feature-icon baby"></span>
+            <span ng-class="{active:loc.bathroom_reviews[0].wheelchair_accessible == 1}" class="feature-icon wheelchair"></span>
+            <span ng-class="{active:loc.bathroom_reviews[0].sing_or_mult == 1}" class="feature-icon single-stall"></span>
+            <span ng-class="{active:loc.bathroom_reviews[0].unisex == 1}" class="feature-icon unisex"></span>
           </div>
           <!--
           <pre>
