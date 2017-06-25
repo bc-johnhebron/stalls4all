@@ -9,7 +9,7 @@
   position:relative;
   float: right;
   height: 40px;
-  bottom: 15px;
+  bottom: 30px;
   right: 0px;
 }
 .feature-icon {
@@ -43,7 +43,7 @@
   .btn {
     border: 1px solid $brand-primary;
     background: transparent;
-    margin: 5px; 
+    margin: 5px;
     &:hover{
       background-color: lighten($brand-primary, 25);
     }
