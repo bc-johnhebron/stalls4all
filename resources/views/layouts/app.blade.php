@@ -29,7 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/locations') }}">
+                    <a class="navbar-brand" href="/locations">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
