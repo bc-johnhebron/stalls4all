@@ -17,6 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->integer('location_id');
             $table->integer('user_id');
+            $table->string('yelp_id');
             $table->integer('stars');
             $table->boolean('sing_or_mult')->nullable();
             $table->integer('cleanliness')->nullable();

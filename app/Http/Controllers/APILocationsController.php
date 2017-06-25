@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Location;
 use App\YelpRequest;
+use App\Review;
 
 class APILocationsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -45,14 +47,42 @@ class APILocationsController extends Controller
         if ($request->query('zip') !== NULL AND $request->query('zip') !== '') {
             // if zip : ?location=
             $url_params['location'] = $request->query('zip');
-            return YelpRequest::request($bearer_token, $host, $path, $url_params);
+            $locations_JSON = json_decode(YelpRequest::request($bearer_token, $host, $path, $url_params), true);
+
+            // Loop through returned businesses and look for bathroom reviews
+            foreach ($locations_JSON['businesses'] as $id => $location) {
+                $reviews = Review::where('yelp_id', $location['id'])->get()->toArray();
+                $locations_JSON['businesses'][$id]['bathroom_reviews'] = $reviews;
+            }
+
+            // parse to JSON and return!
+            return json_encode($locations_JSON);
         } elseif ($request->query('lat') !== NULL AND $request->query('lat') !== '' AND $request->query('lon') !== NULL AND $request->query('lon') !== '') {
             $url_params['latitude'] = $request->query('lat');
             $url_params['longitude'] = $request->query('lon');
-            return YelpRequest::request($bearer_token, $host, $path, $url_params);
+            $locations_JSON = json_decode(YelpRequest::request($bearer_token, $host, $path, $url_params), true);
+
+            // Loop through returned businesses and look for bathroom reviews
+            foreach ($locations_JSON['businesses'] as $id => $location) {
+                $reviews = Review::where('yelp_id', $location['id'])->get()->toArray();
+                $locations_JSON['businesses'][$id]['bathroom_reviews'] = $reviews;
+            }
+
+            // parse to JSON and return!
+            return json_encode($locations_JSON);
+
         } else {
             $url_params['location'] = "Austin";
-            return YelpRequest::request($bearer_token, $host, $path, $url_params);
+            $locations_JSON = json_decode(YelpRequest::request($bearer_token, $host, $path, $url_params), true);
+
+            // Loop through returned businesses and look for bathroom reviews
+            foreach ($locations_JSON['businesses'] as $id => $location) {
+                $reviews = Review::where('yelp_id', $location['id'])->get()->toArray();
+                $locations_JSON['businesses'][$id]['bathroom_reviews'] = $reviews;
+            }
+
+            // parse to JSON and return!
+            return json_encode($locations_JSON);
         }
 
     }
@@ -66,10 +96,20 @@ class APILocationsController extends Controller
      */
     public function show($id)
     {
-        //
-        $location = Location::find($id);
-        // dd($location->photos);
-        return $location;
 
+        $bearer_token = 'jSIDkWGFWjZ0-vnKrnPZFL0-gLS1kJxh4mls_8By6MT0izX3RY2TQIzxjf9QF0gl5RY0OQKiNzoRYRfyZApJI_ve7KK1VWb4mndmYR7WykwUA9746qDMbZ8ugkBPWXYx';
+        $host = 'https://api.yelp.com';
+        $path = "/v3/businesses/{$id}";
+
+        $location_JSON = json_decode(YelpRequest::request($bearer_token, $host, $path, $url_params = array()), true);
+
+        // Loop through returned businesses and look for bathroom reviews
+        $reviews = Review::where('yelp_id', $location_JSON['id'])->get()->toArray();
+        $location_JSON['bathroom_reviews'] = $reviews;
+
+        // parse to JSON and return!
+        return json_encode($location_JSON);
     }
+
+    
 }

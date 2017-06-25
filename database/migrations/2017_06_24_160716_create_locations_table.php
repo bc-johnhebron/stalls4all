@@ -20,6 +20,7 @@ class CreateLocationsTable extends Migration
             $table->string('name');
             $table->string('image_url');
             $table->integer('yelp_rating');
+            $table->string('yelp_id');
             $table->text('description')->nullable();
             $table->string('category');
             $table->string('address1');
