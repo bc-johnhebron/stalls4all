@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ng', function () {
+    return view('ng-list');
+});
+
 Route::get('/list', function() {
-    return View::make('index'); 
+    return View::make('index');
 });
 
 Auth::routes();
