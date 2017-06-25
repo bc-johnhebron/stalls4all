@@ -8548,3 +8548,10 @@ label {
   text-decoration: underline;
 }
 
+.alert a,
+.alert a:hover,
+.alert a:focus {
+  color: #000;
+  text-decoration: underline;
+}
+

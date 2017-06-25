@@ -14,7 +14,12 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center">
         <h1>Restrooms Near You</h1>
-        <button ng-hide="userLoc" class="btn btn-info" ng-click="getUserLoc()">Get my location</button>
+        <div class="alert alert-danger" ng-hide="userLoc">
+          <p>
+            <strong>Aw poop, we couldn't find you!</strong>
+            Allow geolocation for <a href="https://yandex.com/support/common/browsers-settings/geo-chrome.html" target="_blank">Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/geolocation/" target="_blank">Firefox</a>, or <a href="https://support.apple.com/en-us/HT204690" target="_blank">Safari</a> for results closest to you!
+          </p>
+        </div>
       </div>
     </div>
     <div class="row">

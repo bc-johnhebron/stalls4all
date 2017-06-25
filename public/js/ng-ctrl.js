@@ -47,19 +47,6 @@ ctrl.controller('mainController', ['$scope','Locations','geolocation', function(
     }
     $scope.getUserLoc();
 
-
-    /*dataService.getFormattedData()
-      .success(function(data) {
-        $scope.data = data;
-        $scope.loading = false;
-      });
-      */
-
-    $scope.getUserLoc = function(){
-      // TODO: Get user location with geolocation service
-      //$scope.userLoc = !$scope.userLoc;
-      console.log('get location');
-    }
 }]);
 
 ctrl.controller('reviewController', ['$scope', function($scope){
