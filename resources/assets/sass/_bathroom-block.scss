@@ -4,3 +4,28 @@
   padding: 0px 15px 10px 15px;
   border: 1px solid $laravel-border-color;
 }
+
+.feature-icon {
+  display:inline-block;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: .3;
+  &.baby {
+    background-image: url('/images/icon_baby.svg');
+  }
+  &.wheelchair {
+    background-image: url('/images/icon_wheelchair.svg');
+  }
+  &.single-stall {
+    background-image: url('/images/icon_single.svg');
+  }
+  &.unisex {
+    background-image: url('/images/icon_unisex.svg');
+  }
+  &.active {
+    opacity: 1;
+  }
+}

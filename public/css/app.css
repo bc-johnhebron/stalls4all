@@ -8479,3 +8479,33 @@ img.img-responsive {
   border: 1px solid #d3e0e9;
 }
 
+.feature-icon {
+  display: inline-block;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: .3;
+}
+
+.feature-icon.baby {
+  background-image: url("/images/icon_baby.svg");
+}
+
+.feature-icon.wheelchair {
+  background-image: url("/images/icon_wheelchair.svg");
+}
+
+.feature-icon.single-stall {
+  background-image: url("/images/icon_single.svg");
+}
+
+.feature-icon.unisex {
+  background-image: url("/images/icon_unisex.svg");
+}
+
+.feature-icon.active {
+  opacity: 1;
+}
+
